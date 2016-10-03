@@ -1,4 +1,10 @@
 node {
+
+    sh 'env > env.txt'
+    readFile('env.txt').split("\r?\n").each {
+        println it
+    }
+
   /**
    * Check the code out to this box (Jenkins).
    */
@@ -22,10 +28,5 @@ node {
     //step([$class: 'JUnitResultArchiver', testResults: 'target/*.xml'])
     //step([$class: 'ArtifactArchiver', artifacts: 'coverage/**/*', fingerprint: true])
     //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
-
-    sh 'env > env.txt'
-    readFile('env.txt').split("\r?\n").each {
-        println it
-    }
   }
 }
