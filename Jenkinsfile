@@ -23,6 +23,9 @@ node {
     //step([$class: 'ArtifactArchiver', artifacts: 'coverage/**/*', fingerprint: true])
     //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
 
-    println env.dump()
+    sh 'env > env.txt'
+    readFile('env.txt').split("\r?\n").each {
+        println it
+    }
   }
 }
