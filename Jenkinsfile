@@ -1,15 +1,16 @@
 node {
-
     sh 'env > env.txt'
     readFile('env.txt').split("\r?\n").each {
         println it
     }
+}
 
+node {
   /**
    * Check the code out to this box (Jenkins).
    */
   stage 'Fetch source code'
-  git url: 'https://github.com/AlliTestOrg/ReactSearchPrototypeApp.git', branch: 'master'
+  checkout scm
 
   /**
    * Install app dependencies.
