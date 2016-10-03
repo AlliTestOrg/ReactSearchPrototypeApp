@@ -21,6 +21,8 @@ node {
   finally {
     //step([$class: 'JUnitResultArchiver', testResults: 'target/*.xml'])
     //step([$class: 'ArtifactArchiver', artifacts: 'coverage/**/*', fingerprint: true])
-    step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
+    //step([$class: 'Mailer', notifyEveryUnstableBuild: true, recipients: "allister.price@gmail.com", sendToIndividuals: true])
+
+    this.binding.variables.each {k,v -> println "$k = $v"}
   }
 }
